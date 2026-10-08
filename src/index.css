@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Host Grotesk", sans-serif;
+  --font-display: "Host Grotesk", sans-serif;
+  --font-serif: "Host Grotesk", sans-serif;
+  
+  --color-brand-blue: #0a64ff;
+  --color-brand-dark: #050505;
+}
+
+:root {
+  font-family: "Host Grotesk", sans-serif;
+}
+
+/* Global Font Application */
+html,
+body,
+#root {
+  font-family: "Host Grotesk", sans-serif;
+}
+
+*, *::before, *::after {
+  font-family: inherit;
+}
+
+/* Ensure all typography elements use Host Grotesk */
+h1, h2, h3, h4, h5, h6,
+p, span, a, button, input, textarea, select, label, badge, div, li, ul, ol, form, blockquote, table, th, td {
+  font-family: "Host Grotesk", sans-serif;
+}
+
+/* Override existing font class declarations to enforce Host Grotesk everywhere */
+.font-sans,
+.font-serif,
+.font-display,
+.font-cormorant {
+  font-family: "Host Grotesk", sans-serif !important;
+}
+
+/* Custom styles for luxury appearance */
+html {
+  scroll-behavior: smooth;
+  background-color: #050505;
+  color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0a64ff;
+}
+
+/* Custom scrollbars for Dual Scroll View matching reference */
+.sidebar-dark-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.sidebar-dark-scroll::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+  height: 0px;
+}
+
+.content-light-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.content-light-scroll::-webkit-scrollbar-track {
+  background: #f4f4f5;
+}
+.content-light-scroll::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 4px;
+}
+.content-light-scroll::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+
+/* Dual Panel Application Layout */
+@media (min-width: 1024px) {
+  .app-dual-layout {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .sidebar-panel {
+    width: 28%;
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    flex-shrink: 0;
+    min-height: 0;
+  }
+
+  .main-content-panel {
+    width: 72%;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-width: 0;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 1023px) {
+  .app-dual-layout {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .sidebar-panel {
+    width: 100%;
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .main-content-panel {
+    width: 100%;
+    height: auto;
+    overflow-y: visible;
+  }
+}
+
+/* Testimonial Horizontal Carousel Styles */
+.testimonial-carousel {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.testimonial-track {
+  display: flex;
+  width: 100%;
+  will-change: transform;
+}
+
+@media (max-width: 639px) {
+  .testimonial-track {
+    gap: 16px;
+    transform: translateX(calc(-1 * var(--slide-index, 0) * (100% + 16px)));
+  }
+  .testimonial-slide {
+    width: 100%;
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .testimonial-track {
+    gap: 20px;
+    transform: translateX(calc(-1 * var(--slide-index, 0) * ((100% + 20px) / 2)));
+  }
+  .testimonial-slide {
+    width: calc((100% - 20px) / 2);
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonial-track {
+    gap: 28px;
+    transform: translateX(calc(-1 * var(--slide-index, 0) * ((100% + 28px) / 3)));
+  }
+  .testimonial-slide {
+    width: calc((100% - 56px) / 3);
+    flex-shrink: 0;
+  }
+}
